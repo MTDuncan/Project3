@@ -1,0 +1,27 @@
+/* App.css */
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items:normal;
+    font-family: Arial, sans-serif;
+    background-color: #F0F0F0;
+    min-height: 100vh;
+  }
+  
+  .App-header {
+    text-align: center;
+    padding: 20px;
+    background-color: #282c34;
+    color: white;
+    width: 100%;
+  }
+  
+  .main {
+    display: inline-flex ;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  

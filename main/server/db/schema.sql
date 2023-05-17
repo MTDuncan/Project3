@@ -1,8 +1,8 @@
 -- schema.sql
 
-CREATE DATABASE IF NOT EXISTS ToDoDatabase;
+CREATE DATABASE IF NOT EXISTS events_db;
 
-USE ToDoDatabase;
+USE events_db;
 
 CREATE TABLE IF NOT EXISTS ToDoEvents (
     id INT AUTO_INCREMENT,

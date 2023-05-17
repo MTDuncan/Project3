@@ -6,7 +6,7 @@ const App = () => {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    fetch('/api/events') // Replace with your server's endpoint URL
+    fetch('../server/server.js') // Replace with your server's endpoint URL
       .then((response) => response.json())
       .then((data) => {
         setEvents(data);

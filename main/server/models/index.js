@@ -1,3 +1,3 @@
-const ToDoEvent = require('./events');
+const toDoEvent = require('./events');
 
-module.exports = { ToDoEvent };
+module.exports = { toDoEvent };

@@ -31,7 +31,7 @@ connection.once('open', async () => {
     });
   }
 
-  // Add events to the collection and await the results
+    // Add events to the collection and await the results
   // await toDoEvent.collection.insertMany(events);
 
   // Log out the seed data to indicate what should appear in the database

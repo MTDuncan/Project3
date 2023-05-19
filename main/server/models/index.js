@@ -1,3 +1,3 @@
-const toDoEventSchema = require('./events');
+const toDoEvent = require('./events');
 
-module.exports = { toDoEventSchema };
+module.exports = { toDoEvent };

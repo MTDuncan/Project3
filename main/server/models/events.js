@@ -1,6 +1,6 @@
 const { Schema, Types } = require('mongoose');
 
-const toDoEventSchema = new Schema(
+const toDoEvent = new Schema(
   {
     eventId: {
       type: Schema.Types.ObjectId,
@@ -34,4 +34,4 @@ const toDoEventSchema = new Schema(
   }
 );
 
-module.exports = toDoEventSchema;
+module.exports = toDoEvent;

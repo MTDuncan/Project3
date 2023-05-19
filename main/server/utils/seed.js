@@ -1,5 +1,5 @@
 const connection = require('../config/connection');
-const { ToDoEvent } = require('../models');
+const { toDoEvent } = require('../models');
 const { getRandomPersonalEvents, getRandomPublicEvents } = require('./eventData');
 
 connection.on('error', (err) => err);
@@ -8,7 +8,7 @@ connection.once('open', async () => {
   console.log('connected');
 
   // Drop existing ToDoEvents
-  await ToDoEvent.deleteMany({});
+  // await toDoEvent.deleteMany({});
 
   // Create empty array to hold the events
   const events = [];
@@ -32,7 +32,7 @@ connection.once('open', async () => {
   }
 
   // Add events to the collection and await the results
-  await ToDoEvent.collection.insertMany(events);
+  // await toDoEvent.collection.insertMany(events);
 
   // Log out the seed data to indicate what should appear in the database
   console.table(events);

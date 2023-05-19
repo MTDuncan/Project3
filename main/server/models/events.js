@@ -1,4 +1,4 @@
-const { Schema, Types } = require('mongoose');
+const { Schema, Types, default: mongoose } = require('mongoose');
 
 const toDoEvent = new Schema(
   {
@@ -34,4 +34,4 @@ const toDoEvent = new Schema(
   }
 );
 
-module.exports = toDoEvent;
+module.exports = mongoose.model('Event', toDoEvent);

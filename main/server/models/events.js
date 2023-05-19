@@ -1,11 +1,37 @@
-const mongoose = require('mongoose');
+const { Schema, Types } = require('mongoose');
 
-const ToDoEventSchema = new mongoose.Schema({
-  title: String,
-  description: String,
-  weekday: String,
-});
+const toDoEvent = new Schema(
+  {
+    eventId: {
+      type: Schema.Types.ObjectId,
+      default: () => new Types.ObjectId(),
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+    },
+    weekday: {
+      type: String,
+      enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    },
+    is_completed: {
+      type: Boolean,
+      default: false,
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
+  },
+  {
+    toJSON: {
+      getters: true,
+    },
+    id: false,
+  }
+);
 
-const ToDoEvent = mongoose.model('ToDoEvent', ToDoEventSchema);
-
-module.exports = ToDoEvent;
+module.exports = toDoEvent;

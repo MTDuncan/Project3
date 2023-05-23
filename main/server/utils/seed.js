@@ -1,7 +1,11 @@
 const db = require('../config/connection');
 const ToDoEvent = require('../models/events');
 const { getRandomPersonalEvents, getRandomPublicEvents } = require('./eventData');
-const eventData = require('./events.json')
+// const eventData = require('./events.json')
+const fs = require('fs');
+const path = require('path');
+
+const eventsData = JSON.parse(fs.readFileSync(path.join(__dirname, './events.json'), 'utf-8'));
 
 // connection.on('error', console.error.bind(console, 'connection error:'));
 
@@ -10,16 +14,9 @@ db.once('open', async () => {
 
   // Drop existing ToDoEvents
   try {
-    const events = await ToDoEvent.find({});
-    if (!events) {
-        console.log('No ToDoEvent found.');
-    } else {
-        for(let event of events) {
-            await event.remove();
-        }
-    }
+    await ToDoEvent.deleteMany({});
   } catch(err) {
-    console.log('Error finding ToDoEvent:', err);
+    console.log('Error deleting ToDoEvent:', err);
   };
   
   // Create empty array to hold the events
@@ -43,12 +40,15 @@ db.once('open', async () => {
     });
 
     // Add events to the collection and await the results
-    // await ToDoEvent.create(events[i]);
   } 
-  ToDoEvent.insertMany(events)
-
-  // Log out the seed data to indicate what should appear in the database
-  console.table(events);
+ try {
+    await ToDoEvent.insertMany(eventsData);
+  } catch (err) {
+    console.log('Error inserting events:', err);
+  }
+    // Log out the seed data to indicate what should appear in the database
+  console.table(eventsData);
+  console.log(events)
   console.info('Seeding complete! 🌱');
   process.exit(0);
 });

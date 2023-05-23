@@ -1,0 +1,35 @@
+{
+  "weekdays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+  ],
+  "personalEvents": [
+      "Grocery Shopping",
+      "Gym Session",
+      "Doctor Appointment",
+      "Walk the dog",
+      "Cook Dinner",
+      "Clean the House",
+      "Study for Exam",
+      "Call Family",
+      "Repair Car",
+      "Yoga Class"
+  ],
+  "publicEvents": [
+      "Concert",
+      "Public Lecture",
+      "Theatre Performance",
+      "Festival",
+      "Art Exhibition",
+      "Sports Game",
+      "Farmers Market",
+      "Book Club",
+      "Dance Class",
+      "Coding Workshop"
+  ]
+}

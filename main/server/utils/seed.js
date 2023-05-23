@@ -1,24 +1,27 @@
-const connection = require('../config/connection');
+const db = require('../config/connection');
 const ToDoEvent = require('../models/events');
 const { getRandomPersonalEvents, getRandomPublicEvents } = require('./eventData');
+const eventData = require('./events.json')
 
-connection.on('error', console.error.bind(console, 'connection error:'));
+// connection.on('error', console.error.bind(console, 'connection error:'));
 
-connection.once('open', async () => {
+db.once('open', async () => {
   console.log('connected');
 
   // Drop existing ToDoEvents
-  ToDoEvent.find({}, function(err, events){
-    if (err) {
-        console.log('Error finding ToDoEvent:', err);
-    } else if (!events) {
+  try {
+    const events = await ToDoEvent.find({});
+    if (!events) {
         console.log('No ToDoEvent found.');
     } else {
-        events.forEach(function(event){
-            event.remove();
-        });
+        for(let event of events) {
+            await event.remove();
+        }
     }
-});
+  } catch(err) {
+    console.log('Error finding ToDoEvent:', err);
+  };
+  
   // Create empty array to hold the events
   const events = [];
 
@@ -40,8 +43,9 @@ connection.once('open', async () => {
     });
 
     // Add events to the collection and await the results
-    await ToDoEvent.create(events[i]);
-  }
+    // await ToDoEvent.create(events[i]);
+  } 
+  ToDoEvent.insertMany(events)
 
   // Log out the seed data to indicate what should appear in the database
   console.table(events);

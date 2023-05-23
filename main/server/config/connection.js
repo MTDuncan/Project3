@@ -9,5 +9,5 @@ const db = mongoose.connection;
 //   console.log('Connected to the database!');
 //   // Additional code or logic to run when the connection is established
 // });
-
+console.log("connected to Mongo")
 module.exports = db;

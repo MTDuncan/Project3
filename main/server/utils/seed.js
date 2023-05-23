@@ -48,7 +48,7 @@ db.once('open', async () => {
   }
     // Log out the seed data to indicate what should appear in the database
   console.table(eventsData);
-  console.log(events)
+  console.table(events)
   console.info('Seeding complete! 🌱');
   process.exit(0);
 });

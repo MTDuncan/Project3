@@ -1,17 +1,16 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const mongoose = require('mongoose');
-const typeDefs = require('./schemas/index.js');
-
+const { typeDefs, resolvers } = require('./schemas/index.js');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Connect to the MongoDB database
-mongoose.connect('mongodb://localhost:27017/calender', {
+mongoose.set('strictQuery', false);
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/calendar', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -21,14 +20,18 @@ mongoose.connect('mongodb://localhost:27017/calender', {
     // Create your Apollo Server instance
     const server = new ApolloServer({ typeDefs, resolvers });
 
-    // Apply the Apollo Server middleware to Express app
-    server.applyMiddleware({ app });
+    // Start the server and apply the middleware
+    server.start().then(() => {
+      server.applyMiddleware({ app });
 
-    // Start the server
-    app.listen(PORT, () => {
-      console.log(`API server running on port ${PORT}!`);
+      // Start the server
+      app.listen(PORT, () => {
+        console.log(`API server running on port ${PORT}!`);
+        console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+      });
     });
   })
   .catch((error) => {
     console.error('Error connecting to the database:', error);
   });
+

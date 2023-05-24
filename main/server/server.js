@@ -3,6 +3,7 @@ const { ApolloServer } = require('apollo-server-express');
 const typeDefs = require('./schemas/index.js');
 const mongoose = require('mongoose');
 const dbConnection = require('./config/connection.js');
+const { typeDefs, resolvers } = require('./schemas');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -18,7 +19,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/calendar'
     console.log('Connected to the database!');
 
     // Create your Apollo Server instance
-    const server = new ApolloServer({ typeDefs });
+    const server = new ApolloServer({ typeDefs, resolvers });
 
     // Apply the Apollo Server middleware to Express app
     server.applyMiddleware({ app });

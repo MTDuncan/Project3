@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const ToDoEvent = require('./models/ToDoEvent');
+const ToDoEvent = require('../models/toDoEvent');
 const { weekdays, personalEvents, publicEvents } = require('./events.json');
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/calendar', {

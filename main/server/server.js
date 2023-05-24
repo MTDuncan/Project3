@@ -1,6 +1,5 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
-const typeDefs = require('./schemas/index.js');
 const mongoose = require('mongoose');
 const dbConnection = require('./config/connection.js');
 const { typeDefs, resolvers } = require('./schemas/index.js');

@@ -1,4 +1,4 @@
-const { toDoEvent } = require('./models');
+const { toDoEvent } = require('./models/index.js');
 
 const resolvers = {
   Query: {

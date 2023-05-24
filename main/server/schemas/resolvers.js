@@ -1,22 +1,25 @@
-const { toDoEvent } = require('./models/index.js');
+const { ToDoEvent } = require('../models');
 
 const resolvers = {
   Query: {
-    events: async () => {
-      return await toDoEvent.find({});
+    allToDoEvents: async () => {
+      return await ToDoEvent.find({});
     },
-    event: async (_, { weekday }) => {
-      return await toDoEvent.findOne({ weekday });
+    toDoEvent: async (_, { id }) => {
+      return await ToDoEvent.findById(id);
     },
   },
   Mutation: {
-    createEvent: async (_, { weekday, description }) => {
-      const newEvent = new toDoEvent({ weekday, description });
+    createToDoEvent: async (_, { title, description, weekday }) => {
+      const newEvent = new ToDoEvent({ title, description, weekday });
       await newEvent.save();
       return newEvent;
     },
-    deleteEvent: async (_, { weekday }) => {
-      return await toDoEvent.findOneAndDelete({ weekday });
+    updateToDoEvent: async (_, { id, title, description, weekday }) => {
+      return await ToDoEvent.findByIdAndUpdate(id, { title, description, weekday }, { new: true });
+    },
+    deleteToDoEvent: async (_, { id }) => {
+      return await ToDoEvent.findByIdAndDelete(id);
     },
   },
 };

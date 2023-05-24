@@ -1,7 +1,7 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const mongoose = require('mongoose');
-const typeDefs = require('./schema/index.js');
+const typeDefs = require('./schemas/index.js');
 const resolvers = require('./resolvers/index.js');
 
 const PORT = process.env.PORT || 3001;

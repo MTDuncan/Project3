@@ -1,6 +1,6 @@
 const { gql } = require('apollo-server-express');
 
-const ToDoEventTypeDefs = gql`
+const typeDefs = gql`
   type ToDoEvent {
     _id: ID!
     title: String!
@@ -20,4 +20,4 @@ const ToDoEventTypeDefs = gql`
   }
 `;
 
-module.exports = ToDoEventTypeDefs;
+module.exports = typeDefs;

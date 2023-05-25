@@ -7,7 +7,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/calendar'
   useUnifiedTopology: true,
 });
 
-const createEventObjects = (weekdays, eventList, isPublic) => {
+const createEventObjects = (weekdays, eventList, eventType) => {
   const events = [];
 
   weekdays.forEach(weekday => {
@@ -16,6 +16,7 @@ const createEventObjects = (weekdays, eventList, isPublic) => {
         title: eventName,
         description: `${eventName} on ${weekday}`,
         weekday: weekday,
+        eventType: eventType,
       });
     });
   });
@@ -25,8 +26,10 @@ const createEventObjects = (weekdays, eventList, isPublic) => {
 
 const seedData = async () => {
   try {
-    const personalEventObjects = createEventObjects(weekdays, personalEvents);
-    const publicEventObjects = createEventObjects(weekdays, publicEvents);
+    const personalEventObjects = createEventObjects(weekdays, personalEvents, 'personal');
+    const publicEventObjects = createEventObjects(weekdays, publicEvents, 'public');
+    console.table(personalEventObjects);
+console.table(publicEventObjects);
 
     await ToDoEvent.insertMany(personalEventObjects);
     await ToDoEvent.insertMany(publicEventObjects);

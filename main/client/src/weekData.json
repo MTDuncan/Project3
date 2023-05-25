@@ -1,0 +1,63 @@
+{
+    "weekdays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "events": [
+      {
+        "id": 1,
+        "title": "Grocery Shopping",
+        "description": "Buy fruits, vegetables, and dairy",
+        "weekday": "Monday",
+        "eventType": "personal"
+      },
+      {
+        "id": 2,
+        "title": "Gym Session",
+        "description": "Workout at the gym",
+        "weekday": "Tuesday",
+        "eventType": "personal"
+      },
+      {
+        "id": 3,
+        "title": "Doctor Appointment",
+        "description": "Visit the doctor's office",
+        "weekday": "Wednesday",
+        "eventType": "personal"
+      },
+      {
+        "id": 4,
+        "title": "Team Meeting",
+        "description": "Attend weekly team meeting",
+        "weekday": "Thursday",
+        "eventType": "work"
+      },
+      {
+        "id": 5,
+        "title": "Movie Night",
+        "description": "Watch a movie with friends",
+        "weekday": "Friday",
+        "eventType": "public"
+      },
+      {
+        "id": 6,
+        "title": "Weekend Trip",
+        "description": "Go on a weekend trip",
+        "weekday": "Saturday",
+        "eventType": "public"
+      },
+      {
+        "id": 7,
+        "title": "Relaxing Sunday",
+        "description": "Take a restful day",
+        "weekday": "Sunday",
+        "eventType": "personal"
+      }
+    ]
+  }
+  

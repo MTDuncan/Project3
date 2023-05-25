@@ -1,27 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-const Input = ({ day, onSubmit, initialData = '' }) => {
-  const [value, setValue] = useState(initialData);
-
-  useEffect(() => {
-    setValue(initialData);
-  }, [initialData]);
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
-
-  const handleSubmit = () => {
-    onSubmit(day, value);
-  };
-
+const Input = ({ day, events = [] }) => {
   return (
     <div>
-      <h2>{`Input for ${day}`}</h2>
-      <textarea value={value} onChange={handleChange} />
-      <button onClick={handleSubmit}>Submit</button>
+      <h2>{`Events for ${day}`}</h2>
+      {events.map((event, index) => (
+        <div key={index}>
+          <h3>{event.title}</h3>
+          <p>{event.description}</p>
+          <p>{event.eventType}</p>
+        </div>
+      ))}
     </div>
   );
 };
 
 export default Input;
+

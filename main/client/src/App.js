@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Calendar from './components/Calendar/Calendar';
+import weekData from './weekData.json';
 
 const App = () => {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    fetch('../server/server.js') // Replace with your server's endpoint URL
-      .then((response) => response.json())
-      .then((data) => {
-        setEvents(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching events:', error);
-      });
+    setEvents(weekData.events);
   }, []);
 
   return (

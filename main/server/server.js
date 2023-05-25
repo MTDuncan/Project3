@@ -19,7 +19,14 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/calendar'
 
     // Create your Apollo Server instance
     const server = new ApolloServer({ typeDefs, resolvers });
-
+    // app.get('/events', async (req, res) => {
+    //   try {
+    //     const events = await ToDoEvent.find();
+    //     res.json(events);
+    //   } catch (err) {
+    //     res.status(500).json({ error: err.message });
+    //   }
+    // });
     // Start the server and apply the middleware
     server.start().then(() => {
       server.applyMiddleware({ app });

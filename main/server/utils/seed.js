@@ -26,10 +26,11 @@ const createEventObjects = (weekdays, eventList, eventType) => {
 
 const seedData = async () => {
   try {
+    await ToDoEvent.deleteMany({});
     const personalEventObjects = createEventObjects(weekdays, personalEvents, 'personal');
     const publicEventObjects = createEventObjects(weekdays, publicEvents, 'public');
-    console.table(personalEventObjects);
-console.table(publicEventObjects);
+    // console.table(personalEventObjects);
+// console.table(publicEventObjects);
 
     await ToDoEvent.insertMany(personalEventObjects);
     await ToDoEvent.insertMany(publicEventObjects);

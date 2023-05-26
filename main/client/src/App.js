@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Calendar from './components/Calendar/Calendar';
+import weekData from './weekData.json';
 
 const App = () => {
   const [events, setEvents] = useState([]);
+  const [weatherData, setWeatherData] = useState([]);
 
   useEffect(() => {
-    fetch('../server/server.js') // Replace with your server's endpoint URL
-      .then((response) => response.json())
-      .then((data) => {
-        setEvents(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching events:', error);
-      });
+    setEvents(weekData.events);
+    setWeatherData(weekData.weekdays);
   }, []);
 
   return (
@@ -22,7 +18,7 @@ const App = () => {
         <h1>My Events App</h1>
       </header>
       <main>
-        <Calendar events={events} />
+        <Calendar events={events} weatherData={weatherData} />
       </main>
     </div>
   );

@@ -4,7 +4,7 @@ import Input from '../Input/Input';
 
 const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-const Calendar = ({ events }) => {
+const Calendar = ({ events, weatherData }) => {
   const [selectedDay, setSelectedDay] = useState(null);
 
   const handleDayClick = (day) => {
